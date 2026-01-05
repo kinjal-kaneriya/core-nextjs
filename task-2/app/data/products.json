@@ -1,0 +1,30 @@
+[
+  {
+    "id": "1",
+    "name": "Ultra-Wide Monitor",
+    "price": 499,
+    "category": "electronics",
+    "description": "34-inch curved display with 144Hz refresh rate."
+  },
+  {
+    "id": "2",
+    "name": "Mechanical Keyboard",
+    "price": 120,
+    "category": "electronics",
+    "description": "RGB backlit with tactile brown switches."
+  },
+  {
+    "id": "3",
+    "name": "Ergonomic Chair",
+    "price": 350,
+    "category": "furniture",
+    "description": "Breathable mesh back with lumbar support."
+  },
+  {
+    "id": "4",
+    "name": "Noise Cancelling Headphones",
+    "price": 299,
+    "category": "electronics",
+    "description": "Industry leading active noise cancellation."
+  }
+]
