@@ -1,0 +1,28 @@
+@import 'tailwindcss';
+
+
+@keyframes authFloat {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.auth-animate {
+  animation: authFloat 3s ease-in-out infinite;
+  animation-delay: -3s; 
+  will-change: transform;
+}
+
+.auth-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-card:hover {
+  transform: translateY(-4px);
+}
