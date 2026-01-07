@@ -1,12 +1,8 @@
 import { NextResponse } from 'next/server'
 
-export async function POST() {
-  const response = NextResponse.redirect(
-    new URL(
-      '/login',
-      'http://localhost:3000',
-    ),
-  )
+export async function POST(request) {
+  const url = new URL('/login', request.url)
+  const response = NextResponse.redirect(url)
 
   response.cookies.set('auth_user', '', {
     path: '/',
