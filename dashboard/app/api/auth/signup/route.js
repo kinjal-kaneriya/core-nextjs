@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { users } from '@/lib/users'
+import bcrypt from 'bcryptjs'
 
 export async function POST(request) {
   const body = await request.json()
@@ -8,6 +9,13 @@ export async function POST(request) {
   if (!name || !email || !password) {
     return NextResponse.json(
       { message: 'All fields are required' },
+      { status: 400 },
+    )
+  }
+  
+  if(password.length < 8) {
+    return NextResponse.json(
+      { message: 'Password must be at least 8 characters long' },
       { status: 400 },
     )
   }
@@ -20,7 +28,9 @@ export async function POST(request) {
     )
   }
 
-  users.push({ name, email, password })
+  const hashedPassword = await bcrypt.hash(password, 10)
+
+  users.push({ name, email, password: hashedPassword })
 
   const response = NextResponse.json(
     { message: 'Signup successful' },

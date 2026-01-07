@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { users } from '@/lib/users'
+import bcrypt from 'bcryptjs'
 
 export async function POST(request) {
   const body = await request.json()
@@ -15,6 +16,14 @@ export async function POST(request) {
   const user = users.find((u) => u.email === email && u.password === password)
 
   if (!user) {
+    return NextResponse.json(
+      { message: 'Invalid email or password' },
+      { status: 401 },
+    )
+  }
+
+  const passCheck = await bcrypt.compare(password, user.password)
+  if (!passCheck) {
     return NextResponse.json(
       { message: 'Invalid email or password' },
       { status: 401 },
